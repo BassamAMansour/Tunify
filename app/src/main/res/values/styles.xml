@@ -21,4 +21,10 @@
         <item name="android:background">?android:selectableItemBackground</item>
     </style>
 
+    <style name="MusicControlButtonsStyle" parent="TransparentBackgroundButton">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:cropToPadding">true</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
 </resources>

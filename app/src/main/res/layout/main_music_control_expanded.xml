@@ -1,14 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_bottom_sheet_expanded"
+    <data>
+
+        <variable
+            name="song"
+            type="com.bassamworks.tunify.models.ui.Song" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_album_art"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/album_art"
+            android:cropToPadding="true"
+            android:scaleType="fitCenter"
+            android:src="@color/transparentColorAccent"
+            app:layout_constraintBottom_toTopOf="@+id/tv_song_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_album_art_blurred"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/album_art"
+            android:scaleType="fitCenter"
+            android:src="@color/transparentColorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_album_art" />
+
+        <TextView
+            android:id="@+id/tv_song_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:maxLines="1"
+            android:text="@{song.title}"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@color/lightColorForIcons"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_album_name"
+            app:layout_constraintEnd_toStartOf="@+id/ib_broadcast_song"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/ib_add_to_playlist"
+            app:layout_constraintTop_toBottomOf="@+id/iv_album_art"
+            tools:text="Song Title" />
+
+        <TextView
+            android:id="@+id/tv_album_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{song.album}"
+            android:textAlignment="center"
+            android:textColor="@color/lightColorForIcons"
+            app:layout_constraintBottom_toTopOf="@+id/tv_artist_name"
+            app:layout_constraintEnd_toStartOf="@+id/ib_broadcast_song"
+            app:layout_constraintStart_toEndOf="@+id/ib_add_to_playlist"
+            app:layout_constraintTop_toBottomOf="@+id/tv_song_title"
+            tools:text="Album Name" />
+
+        <TextView
+            android:id="@+id/tv_artist_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{song.artist}"
+            android:textAlignment="center"
+            android:textColor="@color/lightColorForIcons"
+            app:layout_constraintBottom_toTopOf="@+id/sb_song_progress"
+            app:layout_constraintEnd_toStartOf="@+id/ib_broadcast_song"
+            app:layout_constraintStart_toEndOf="@+id/ib_add_to_playlist"
+            app:layout_constraintTop_toBottomOf="@+id/tv_album_name"
+            tools:text="Artist Name" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/ib_broadcast_song"
+            style="@style/MusicControlButtonsStyle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:tint="@color/lightColorForIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/ib_add_to_playlist"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ib_add_to_playlist"
+            app:srcCompat="@drawable/outline_wifi_tethering_white_48" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/ib_add_to_playlist"
+            style="@style/MusicControlButtonsStyle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:tint="@color/lightColorForIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_artist_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_song_title"
+            app:srcCompat="@drawable/outline_add_circle_outline_white_48" />
+
+        <SeekBar
+            android:id="@+id/sb_song_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/ib_play_pause"
+            app:layout_constraintEnd_toStartOf="@+id/tv_song_length"
+            app:layout_constraintStart_toEndOf="@+id/tv_current_time"
+            app:layout_constraintTop_toBottomOf="@+id/tv_artist_name"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/tv_song_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/lightColorForIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/sb_song_progress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sb_song_progress"
+            app:layout_constraintTop_toTopOf="@+id/sb_song_progress"
+            tools:text="4:00" />
+
+        <TextView
+            android:id="@+id/tv_current_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/lightColorForIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/sb_song_progress"
+            app:layout_constraintEnd_toStartOf="@+id/sb_song_progress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sb_song_progress"
+            tools:text="2:51" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/ib_repetition"
+            style="@style/MusicControlButtonsStyle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="32dp"
+            android:tint="@color/lightColorForIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/ib_play_pause"
+            app:layout_constraintEnd_toStartOf="@id/ib_skip_previous"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ib_play_pause"
+            app:srcCompat="@drawable/outline_repeat_white_48" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/ib_play_pause"
+            style="@style/MusicControlButtonsStyle"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="24dp"
+            android:tint="@color/lightColorForIcons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/outline_play_circle_outline_white_48" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/ib_skip_previous"
+            style="@style/MusicControlButtonsStyle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:tint="@color/lightColorForIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/ib_play_pause"
+            app:layout_constraintEnd_toStartOf="@+id/ib_play_pause"
+            app:layout_constraintStart_toEndOf="@id/ib_repetition"
+            app:layout_constraintTop_toTopOf="@+id/ib_play_pause"
+            app:srcCompat="@drawable/outline_skip_previous_white_48" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/ib_skip_next"
+            style="@style/MusicControlButtonsStyle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:tint="@color/lightColorForIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/ib_play_pause"
+            app:layout_constraintEnd_toStartOf="@+id/ib_toggle_favourite"
+            app:layout_constraintStart_toEndOf="@+id/ib_play_pause"
+            app:layout_constraintTop_toTopOf="@+id/ib_play_pause"
+            app:srcCompat="@drawable/outline_skip_next_white_48" />
+
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/ib_toggle_favourite"
+            style="@style/MusicControlButtonsStyle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="8dp"
+            android:tint="@color/lightColorForIcons"
+            app:layout_constraintBottom_toBottomOf="@+id/ib_play_pause"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ib_skip_next"
+            app:layout_constraintTop_toTopOf="@+id/ib_play_pause"
+            app:srcCompat="@drawable/outline_favorite_border_white_48" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

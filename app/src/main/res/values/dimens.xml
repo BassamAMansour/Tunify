@@ -8,4 +8,5 @@
     <dimen name="margin_quad">32dp</dimen>
 
     <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="collapsed_music_control_height">64dp</dimen>
 </resources>

@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.bassamworks.tunify.R
-import com.bassamworks.tunify.adapters.LibraryPagerAdapter
+import com.bassamworks.tunify.adapters.pagerAdapters.LibraryPagerAdapter
 
 class LibraryFragment : Fragment() {
 

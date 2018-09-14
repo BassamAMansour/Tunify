@@ -1,11 +1,11 @@
-package com.bassamworks.tunify.adapters
+package com.bassamworks.tunify.adapters.pagerAdapters
 
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.bassamworks.tunify.R
-import com.bassamworks.tunify.fragments.*
+import com.bassamworks.tunify.fragments.libraryFragments.*
 
 class LibraryPagerAdapter(private val context: Context?,
                           fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {

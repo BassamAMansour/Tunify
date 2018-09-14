@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF5252</color>
     <color name="transparentColorPrimary">#CC2196F3</color>
     <color name="transparentColorAccent">#CCFF5252</color>
+    <color name="darkColorForIcons">#000000</color>
+    <color name="lightColorForIcons">#FFFFFF</color>
 </resources>
