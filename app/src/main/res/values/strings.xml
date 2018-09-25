@@ -16,5 +16,7 @@
     <string name="about">About</string>
     <string name="hello_blank_fragment">Hello World</string>
     <string name="album_art">Album Art</string>
-
+    <string name="library">Library</string>
+    <string name="number_of_tracks">%d tracks</string>
+    <string name="number_of_albums">%d albums</string>
 </resources>

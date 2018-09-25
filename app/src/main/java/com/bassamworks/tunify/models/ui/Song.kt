@@ -1,22 +1,14 @@
 package com.bassamworks.tunify.models.ui
 
-import android.databinding.BindingAdapter
-import android.net.Uri
-import android.widget.ImageView
-import com.squareup.picasso.Picasso
+import com.bassamworks.tunify.constants.MediaStoreConstants
+import com.bassamworks.tunify.models.IModelType
 
 data class Song(val id: Long,
-                val title: String,
-                val album: String,
-                val artist: String,
-                val length: Double,
-                val progress: Double,
-                val imgUri: String)
-
-fun Song.getImgUri(): Uri = Uri.parse(imgUri)
-
-@BindingAdapter("app:img")
-fun loadImg(iv: ImageView, uri: String) {
-    Picasso.get().load(uri).into(iv)
-}
+                val filePath: String,
+                var title: String = MediaStoreConstants.DEFAULT_TITLE,
+                var album: String = MediaStoreConstants.DEFAULT_ALBUM_NAME,
+                var artist: String = MediaStoreConstants.DEFAULT_ARTIST_NAME,
+                var length: Double,
+                var progress: Double = 0.0,
+                var imgUri: String = MediaStoreConstants.DEFAULT_ALBUM_ART) : IModelType.UI
 

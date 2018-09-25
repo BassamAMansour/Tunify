@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -9,18 +9,18 @@
         tools:context=".activities.MainActivity"
         tools:showIn="@layout/activity_main">
 
-        <android.support.design.widget.AppBarLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.AppBarOverlay">
 
-            <android.support.v7.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_main_activity"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        </android.support.design.widget.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
         <FrameLayout
             android:id="@+id/main_fragment_container"
@@ -28,23 +28,34 @@
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <fragment
-            android:id="@+id/fragment_music_control"
-            android:name="com.bassamworks.tunify.fragments.MusicControlFragment"
+        <!--<fragment
+            android:id="@+id/main_fragment_container"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:behavior_hideable="false"
-            app:behavior_peekHeight="@dimen/collapsed_music_control_height"
-            app:layout_behavior="@string/bottom_sheet_behavior" />
+            app:defaultNavHost="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:navGraph="@navigation/navigation" />-->
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_shuffle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_double"
-            app:layout_anchor="@id/fragment_music_control"
-            app:layout_anchorGravity="top|end"
-            app:srcCompat="@drawable/outline_shuffle_white_48" />
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+            android:id="@+id/music_control_sliding_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom">
 
-    </android.support.design.widget.CoordinatorLayout>
+            <fragment
+                android:id="@+id/fragment_music_control_collapsed"
+                android:name="com.bassamworks.tunify.fragments.musicControl.MusicControlFragmentCollapsed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <fragment
+                android:id="@+id/fragment_music_control_expanded"
+                android:name="com.bassamworks.tunify.fragments.musicControl.MusicControlFragmentExpanded"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

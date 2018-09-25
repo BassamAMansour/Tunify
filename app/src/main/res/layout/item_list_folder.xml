@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-    </android.support.constraint.ConstraintLayout>
+        <ImageButton
+            android:id="@+id/ib_folder_item_overflow_menu"
+            style="@style/TransparentBackgroundButton.ListItemOverFlowMenu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_overflow_menu" />
+
+        <TextView
+            android:id="@+id/tv_tracks_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ib_folder_item_overflow_menu"
+            app:layout_constraintStart_toEndOf="@id/includer_grid_album_arts"
+            app:layout_constraintTop_toBottomOf="@+id/tv_folder_name"
+            tools:text="200 tracks" />
+
+        <TextView
+            android:id="@+id/tv_folder_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="2dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            app:layout_constraintBottom_toTopOf="@+id/tv_tracks_number"
+            app:layout_constraintEnd_toStartOf="@+id/ib_folder_item_overflow_menu"
+            app:layout_constraintStart_toEndOf="@id/includer_grid_album_arts"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:text="Folder Name" />
+
+        <include
+            android:id="@+id/includer_grid_album_arts"
+            layout="@layout/layout_grid_albums_arts"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_folder_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

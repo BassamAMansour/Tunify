@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <data>
 
-    </android.support.constraint.ConstraintLayout>
+        <variable
+            name="genre"
+            type="com.bassamworks.tunify.models.ui.Genre" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="8dp">
+
+        <TextView
+            android:id="@+id/tv_genre_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@{genre.name}"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            tools:text="Genre Name" />
+    </androidx.cardview.widget.CardView>
 </layout>

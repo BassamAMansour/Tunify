@@ -1,40 +1,43 @@
 package com.bassamworks.tunify.fragments.libraryFragments
 
 
-import android.content.Context
-import android.database.Cursor
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.bassamworks.tunify.R
-import com.bassamworks.tunify.adapters.cursorAdapters.PlaylistsCursorAdapter
-import com.bassamworks.tunify.excutors.AppExecutors
-import com.bassamworks.tunify.media.scanners.MediaStoreScanner
+import com.bassamworks.tunify.adapters.listAdapters.PlaylistsListAdapter
+import com.bassamworks.tunify.models.ui.Playlist
+import com.bassamworks.tunify.viewModels.library.PlaylistsViewModel
 import kotlinx.android.synthetic.main.fragment_playlists.*
 
-class PlaylistsFragment : Fragment() {
+class PlaylistsFragment : LibraryFragment() {
+
+    private lateinit var model: PlaylistsViewModel
+    private val rvAdapter = PlaylistsListAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_playlists, container, false)
+
+        val view = inflater.inflate(R.layout.fragment_playlists, container, false)
+
+        model = ViewModelProviders.of(this)[PlaylistsViewModel::class.java]
+
+        model.getLiveData().observe(this, Observer<List<Playlist>> {
+            updateAdapter(it ?: listOf())
+        })
+
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        getAllPlaylists(view.context)
+        rv_all_playlists.adapter = rvAdapter
     }
 
-    private fun getAllPlaylists(context: Context) {
-        AppExecutors.instance?.diskIO()?.execute {
-            updateAdapter(context, MediaStoreScanner(context).getAllPlaylists())
-        }
+    private fun updateAdapter(playlists: List<Playlist>) {
+        rvAdapter.submitList(playlists)
     }
-
-    private fun updateAdapter(context: Context, cursor: Cursor) {
-        lv_all_playlists.adapter = PlaylistsCursorAdapter(context, cursor)
-    }
-
 }

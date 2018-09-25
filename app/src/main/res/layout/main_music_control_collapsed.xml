@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,9 +10,7 @@
             type="com.bassamworks.tunify.models.ui.Song" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="64dp"
             tools:background="@android:color/darker_gray">
@@ -33,23 +33,24 @@
                 android:layout_height="0dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/album_art"
-                android:scaleType="center"
-                android:src="@color/colorAccent"
+                android:cropToPadding="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/sample_album_art"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/tv_song_title"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <android.support.v7.widget.AppCompatImageButton
+            <ImageButton
                 android:id="@+id/ib_play_pause"
                 style="@style/MusicControlButtonsStyle"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
                 android:scaleType="fitCenter"
                 android:tint="@color/lightColorForIcons"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -58,15 +59,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/outline_play_circle_outline_white_48" />
 
-            <android.support.v7.widget.AppCompatImageButton
+            <ImageButton
                 android:id="@+id/ib_skip_previous"
                 style="@style/MusicControlButtonsStyle"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
                 android:adjustViewBounds="true"
                 android:cropToPadding="true"
                 android:scaleType="fitCenter"
@@ -79,15 +80,15 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/outline_skip_previous_white_48" />
 
-            <android.support.v7.widget.AppCompatImageButton
+            <ImageButton
                 android:id="@+id/ib_skip_next"
                 style="@style/MusicControlButtonsStyle"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 android:scaleType="fitCenter"
                 android:tint="@color/lightColorForIcons"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -98,14 +99,13 @@
 
             <TextView
                 android:id="@+id/tv_song_title"
+                style="@style/ellipsizedText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
-                android:ellipsize="end"
-                android:maxLines="1"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="2dp"
                 android:text="@{song.title}"
                 android:textAlignment="viewStart"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -120,14 +120,13 @@
 
             <TextView
                 android:id="@+id/tv_album_name"
+                style="@style/ellipsizedText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
-                android:ellipsize="end"
-                android:maxLines="1"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="2dp"
                 android:text="@{song.album}"
                 android:textAlignment="viewStart"
                 android:textColor="@color/lightColorForIcons"
@@ -140,14 +139,13 @@
 
             <TextView
                 android:id="@+id/tv_artist_name"
+                style="@style/ellipsizedText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
-                android:ellipsize="end"
-                android:maxLines="1"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="2dp"
                 android:text="@{song.artist}"
                 android:textAlignment="viewStart"
                 android:textColor="@color/lightColorForIcons"
@@ -157,6 +155,6 @@
                 app:layout_constraintStart_toEndOf="@+id/iv_song_cover"
                 app:layout_constraintTop_toBottomOf="@+id/tv_album_name"
                 tools:text="Artist Name" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </layout>

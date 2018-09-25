@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowActionBarOverlay">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -25,6 +26,20 @@
         <item name="android:adjustViewBounds">true</item>
         <item name="android:cropToPadding">true</item>
         <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="ellipsizedText">
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="TransparentBackgroundButton.ListItemOverFlowMenu">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:tint">@color/darkColorForIcons</item>
     </style>
 
 </resources>

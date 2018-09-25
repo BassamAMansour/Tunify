@@ -1,7 +1,7 @@
 package com.bassamworks.tunify.activities
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.bassamworks.tunify.R
 
 class SettingsActivity : AppCompatActivity() {

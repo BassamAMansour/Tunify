@@ -35,6 +35,10 @@ object MediaStoreConstants {
     const val DEFAULT_DISPLAY_NAME: String = ""
     const val DEFAULT_TITLE: String = ""
     const val DEFAULT_DATE_ADDED: Long = -1
+    const val DEFAULT_CD_NUMBER: Int = 1
+    const val DEFAULT_PLAYBACK_COUNT: Int = 0
+    const val DEFAULT_DURATION: Long = 0L
+    const val DEFAULT_PLAYBACK_BOOKMARK: Long = 0L
 }
 
 object NearbyConstants {

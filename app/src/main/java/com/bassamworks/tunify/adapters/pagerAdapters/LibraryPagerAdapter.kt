@@ -1,14 +1,11 @@
 package com.bassamworks.tunify.adapters.pagerAdapters
 
 import android.content.Context
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
 import com.bassamworks.tunify.R
 import com.bassamworks.tunify.fragments.libraryFragments.*
 
 class LibraryPagerAdapter(private val context: Context?,
-                          fragmentManager: FragmentManager) : FragmentStatePagerAdapter(fragmentManager) {
+                          fragmentManager: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentStatePagerAdapter(fragmentManager) {
 
     companion object {
         const val NUMBER_OF_TABS = 5
@@ -20,10 +17,10 @@ class LibraryPagerAdapter(private val context: Context?,
 
     }
 
-    override fun getItem(position: Int): Fragment {
+    override fun getItem(position: Int): androidx.fragment.app.Fragment {
         return when (position) {
             POSITION_FRAGMENT_PLAYLISTS -> PlaylistsFragment()
-            POSITION_FRAGMENT_ALL_SONGS -> AllSongsFragment()
+            POSITION_FRAGMENT_ALL_SONGS -> SongsFragment()
             POSITION_FRAGMENT_ALBUMS -> AlbumsFragment()
             POSITION_FRAGMENT_ARTISTS -> ArtistsFragment()
             POSITION_FRAGMENT_GENRES -> GenresFragment()
